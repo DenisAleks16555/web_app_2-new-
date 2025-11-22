@@ -6,6 +6,19 @@
 -->
 
 <!-- Пишите код ниже -->
-<div class="alert alert-info">
-    Пока пусто. Нужно дописать шаблон!
-</div>
+{%  extends "base.html" %}
+
+{% block content %}
+
+
+    <a href="/load" class="btn btn-primary btn-lg mt-2 shadow"> Получить список книг</a>
+
+    {% for book in books %}
+        <div class="card h-100 shadow">        
+        <p>{{ book.title }}</p>
+        <p>{{ book.price }}</p>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

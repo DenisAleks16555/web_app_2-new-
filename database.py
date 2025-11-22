@@ -20,5 +20,15 @@ class Base(DeclarativeBase):
 # ... код напишем вместе ...
 
 
+
+
+class Book(Base):
+    __tablename__ = "books"
+
+
+    id = Column(Integer, primary_key=True)
+    title = Column(String)
+    price = Column(String)
+
 def create_db():
     Base.metadata.create_all(bind=engine)

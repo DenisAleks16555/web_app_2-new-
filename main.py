@@ -5,7 +5,7 @@ from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 
 # Импортируем настройки (Book импортируем позже, когда напишем)
-from database import SessionLocal, create_db  # , Book
+from database import SessionLocal, create_db, Book
 from parser import get_books_from_web
 
 app = FastAPI()
@@ -29,15 +29,28 @@ def get_db():
 
 
 @app.get("/")
-def home(request: Request):
+def home(request: Request, db:Session = Depends(get_db)):
+    all_books = db.query(Book).all() # Взяли все записи из таблицы книги и передли их
+
     # Задача: Достать книги из БД и передать в шаблон
-    return templates.TemplateResponse("index.html", {"request": request, "books": []})
+    return templates.TemplateResponse("index.html", {"request": request, "books": all_books})
 
-
+# Спарсить данные и подгрузить на страницу
 @app.get("/load")
-def load_books():
+def load_books(db:Session = Depends(get_db)):
     # Задача: Спарсить и сохранить в БД
-    return "Здесь будет загрузка книг"
+    data = get_books_from_web()
+
+    for book in data:
+        new_book = Book(
+            title= book["title"],
+            price = book["price"]
+            )
+        db.add(new_book)
+
+    db.commit()
+    
+    return RedirectResponse(url="/", status_code=303) # переадресация
 
 
 if __name__ == "__main__":
