@@ -22,13 +22,13 @@ class Base(DeclarativeBase):
 
 
 
-class Book(Base):
+class Quote(Base):
     __tablename__ = "books"
 
 
     id = Column(Integer, primary_key=True)
-    title = Column(String)
-    price = Column(String)
+    text = Column(String)
+    author = Column(String)
 
 def create_db():
     Base.metadata.create_all(bind=engine)

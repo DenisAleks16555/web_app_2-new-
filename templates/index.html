@@ -9,16 +9,29 @@
 {%  extends "base.html" %}
 
 {% block content %}
+<div class="text-centr py-3">
+    <h1>Библиотека цитат</h1>
+
+    <a href="/parse" class="btn btn-primary btn-lg mt-2 shadow"> Обновить данные</a>
+</div>
+
+<div class="row mt=4">
+    <!-- Начало цикла(пишем код здесь)-->
 
 
-    <a href="/load" class="btn btn-primary btn-lg mt-2 shadow"> Получить список книг</a>
-
-    {% for book in books %}
-        <div class="card h-100 shadow">        
-        <p>{{ book.title }}</p>
-        <p>{{ book.price }}</p>
+    {% for quote in quotes %}
+        <div class="col-md-6 md-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <blockquote class="blockquote md-0">        
+                        <p>{{ quote.text }}</p>
+                            <footer class="blockquote-footer">{{ quote.author}}</footer>
+                    </blockquote>
+            </div>
+                </div>
         </div>
-
     {% endfor %}
-
+    <!--Конец цикла-->
+</div>
 {% endblock %}
+<!--Закрываем block content здесь-->
