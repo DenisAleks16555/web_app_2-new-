@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from database import SessionLocal, create_db, Quote
 from parser import get_quotes_from_web
 
-# Импортируем настройки (Book импортируем позже, когда напишем)
+# Импортируем настройки (Quote импортируем позже, когда напишем)
 from database import SessionLocal, create_db, Quote
 from parser import get_quotes_from_web
 
@@ -16,7 +16,7 @@ templates = Jinja2Templates(directory="templates")
 # Создаем таблицы (если они описаны)
 create_db()
 
-
+# Получение сессии БД
 def get_db():
     db = SessionLocal()
     try:
