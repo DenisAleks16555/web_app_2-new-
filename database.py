@@ -2,7 +2,7 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import sessionmaker, DeclarativeBase
 
 # Настройки БД
-DATABASE_URL = "sqlite:///./books.db"
+DATABASE_URL = "sqlite:///./quotes.db"
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(bind=engine)
 
@@ -16,14 +16,14 @@ class Base(DeclarativeBase):
 # Мы будем писать модель Book прямо здесь
 # ==========================================
 
-# class Book(Base):
+# class Quote(Base):
 # ... код напишем вместе ...
 
 
 
 
 class Quote(Base):
-    __tablename__ = "books"
+    __tablename__ = "quotes"
 
 
     id = Column(Integer, primary_key=True)
