@@ -1,11 +1,9 @@
-import uvicorn
+
 from fastapi import FastAPI, Request, Depends
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
-from database import SessionLocal, create_db, Quote
-from parser import get_quotes_from_web
-
+import uvicorn
 # Импортируем настройки (Quote импортируем позже, когда напишем)
 from database import SessionLocal, create_db, Quote
 from parser import get_quotes_from_web
