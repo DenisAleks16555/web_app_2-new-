@@ -7,12 +7,32 @@
 </head>
 <body class="bg-light">
     <!--Навигационная панель-->
-    <div class="container mt-5">
-        <h1 class="text-center">📚 Мои Книги</h1>
-        <div class="row mt-4">
-            {% block content %}
-            {% endblock %}
+    <nav class="navbar navbar-expend-lg navbar-dark bg-dark mb-4">
+        <div class="conteiner">
+            <a class="navbar-brand" href="/" exam</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-avto">
+                        <li class="nav-item">
+                            <span class="nav-link text-white">Студент:</span>
+                        </li>
+                    </ul>
+                </div>
         </div>
-    </div>
+    </nav>
+
+    <!--Основной контент(Сюда вставить код из index.html) -->
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Подвал -->
+    footer class="bg-dark text-white text-center py-3 mt-4">
+        <div class="container">
+            <small>&copy; 2025 Курс Python-разработки.Все права защищены.</small>
+        </div>
+</footer>
 </body>
+</html>
+   
 </html>
